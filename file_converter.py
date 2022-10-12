@@ -2,25 +2,19 @@
 ## Import modules
 import pypandoc
 
-## Open markdown file
-get_file = input("File to convert (without extension): ")
-get_type = input("Which file type (md, html): ")
-convert_to = input("Convert to (pdf, html): ")
+def file_converter(file_name, convert_to, get_file):
+  pypandoc.convert_file("./" + file_name, convert_to, outputfile=get_file + "." + convert_to)
 
-file_name = get_file + "." + get_type
+def main():
+  ## Open markdown file
+  get_file = input("File to convert (without extension): ")
+  get_type = input("Which file type (md, html): ")
+  convert_to = input("Convert to (pdf, html): ")
 
-#with open(file_name, 'r') as f:
-#    print(f"Going to convert {file_name} to {convert_to}")
-#    read_source = f.read()
-#    pypandoc.convert_file("./" + read_source, convert_to, outputfile=get_file + "." + convert_to)
+  file_name = get_file + "." + get_type
 
-pypandoc.convert_file("./" + file_name, convert_to, outputfile=get_file + "." + convert_to)
+  file_converter(file_name, convert_to, get_file)
 
-#doc = pandoc.read(file)
-
-#doc.save(get_file + "." + convert_to)
-
-#print(f"Going to convert {file} to {convert_to}")
-#pypandoc.convert_file(file, convert_to, outputfile=get_file + "." + convert_to)
-
+if __name__ == "__main__":
+  main()
 
